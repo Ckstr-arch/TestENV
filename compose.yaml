@@ -1,0 +1,45 @@
+services:
+  db:
+    image: mariadb:11.8
+    environment:
+      MARIADB_DATABASE: sportshub
+      MARIADB_USER: sportshub
+      MARIADB_PASSWORD: ${DB_PASSWORD:?Set DB_PASSWORD in .env.docker}
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:?Set DB_ROOT_PASSWORD in .env.docker}
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./docker/init-test.sql:/docker-entrypoint-initdb.d/20-test.sql:ro
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+    restart: unless-stopped
+  app:
+    build: .
+    ports:
+      - "127.0.0.1:8080:80"
+    environment:
+      APP_ENV: ${APP_ENV:-development}
+      APP_URL: ${APP_URL:-http://localhost:8080}
+      APP_KEY: ${APP_KEY:-}
+      DB_HOST: db
+      DB_PORT: "3306"
+      DB_NAME: sportshub
+      DB_USER: sportshub
+      DB_PASSWORD: ${DB_PASSWORD:?Set DB_PASSWORD in .env.docker}
+      DEMO_MODE: ${DEMO_MODE:-0}
+    volumes:
+      - app_data:/var/www/html/var
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "php", "-r", "$$r = @file_get_contents('http://127.0.0.1/api/v1/health'); exit($$r !== false && str_contains($$r, '\"ok\"') ? 0 : 1);"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+volumes:
+  db_data:
+  app_data:

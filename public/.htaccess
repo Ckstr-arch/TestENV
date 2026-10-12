@@ -1,0 +1,4 @@
+Options -Indexes
+DirectoryIndex index.php
+RewriteEngine On
+RewriteRule ^api/ api.php [QSA,L]
