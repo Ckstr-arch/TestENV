@@ -39,11 +39,11 @@ Adapt the implementation overview and ER diagram in `architecture.md`. Include t
 
 ## Screenshots
 
-Insert your own screenshots of: homepage, club search, registration/login, 2FA enrollment, student dashboard, schedule, tournament registration, booking, administrator CRUD, approvals, recorded results, and reports. Do not include private keys, recovery codes, real student details or credentials in screenshots.
+Use the implemented UI examples in `docs/screenshots/` as a starting point, then capture your team’s final application. Include: homepage, club search, registration/login, 2FA enrollment, student dashboard, schedule, tournament registration, booking, administrator CRUD, approvals, recorded results, and reports. Do not include private keys, recovery codes, real student details or credentials in screenshots.
 
 ## Validation
 
-Workspace testing: 17 security checks, 71 HTTP/MySQL checks, 130 REST API checks, Chromium desktop/mobile public-page checks. Add your real-host validation results and screenshots after deployment. Explain any limitations from `security.md` honestly.
+Workspace testing: 17 security checks, 71 HTTP/MySQL checks, 130 REST API checks, 73 community checks, Chromium desktop/mobile public-page checks. Add your real-host validation results and screenshots after deployment. Explain any limitations from `security.md` honestly.
 
 ## Required links
 

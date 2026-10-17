@@ -84,6 +84,7 @@ Use the generated APP_KEY unchanged, not the placeholder above. Native `.env` va
 php bin/migrate.php
 php bin/seed.php
 php bin/demo-users.php --confirm-demo
+php bin/demo-community.php --confirm-demo
 php bin/doctor.php
 ```
 
@@ -143,6 +144,7 @@ php tests/security.php
 $env:PHP_BIN = 'C:\xampp\php\php.exe'
 py -3 tests/integration.py
 py -3 tests/api.py
+py -3 tests/community.py
 ```
 
 The separate `sportshub_test` database must exist and be accessible. The integration server uses port 8081. It resets that test database only; never put real work there.
@@ -235,6 +237,7 @@ docker compose --env-file .env.docker exec app php bin/doctor.php
 docker compose --env-file .env.docker exec app php tests/security.php
 docker compose --env-file .env.docker exec app python3 tests/integration.py
 docker compose --env-file .env.docker exec app python3 tests/api.py
+docker compose --env-file .env.docker exec app python3 tests/community.py
 ```
 
 The database initialization includes a separate `sportshub_test` database for the integration suite. It is created on the **first** empty-volume initialization. If you reuse an older database volume, create that test database/grant manually rather than deleting wanted data. The app image includes Python only for development verification.
@@ -306,3 +309,5 @@ Use `py -3` on Windows if Python is selected through its launcher. This suite re
 ## 10. Before submitting or hosting
 
 Use your actual team names, GitHub link, live PHP/MySQL hosted URL and demonstration video in `project-report.md`. Confirm all links are accessible to the lecturer. Demo credentials must not become production accounts. Public deployment additionally needs HTTPS, private secrets, least-privilege database access, backups, production PHP error settings and a tested administrator with 2FA. A locally running project is not a deployed public application.
+
+For the Performance UI/community upgrade and the isolated Mac Compose command, see [ui-and-community.md](ui-and-community.md). The theme control is immediately before the profile menu; Account security and Sign out are inside the profile dropdown.

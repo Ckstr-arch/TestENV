@@ -13,6 +13,10 @@ schemas={
  'SecondFactor':{'password':{'type':'string'},'code':{'type':'string'}},
  'Booking':{'resource_id':{'type':'integer','minimum':1},'starts_at':{'$ref':'#/components/schemas/LocalDateTime'},'ends_at':{'$ref':'#/components/schemas/LocalDateTime'},'purpose':{'type':'string','maxLength':255}},
  'Review':{'status':{'type':'string','enum':['approved','rejected']}},
+ 'CommunityPost':{'body':{'type':'string','minLength':1,'maxLength':5000}},
+ 'CommunityComment':{'body':{'type':'string','minLength':1,'maxLength':2000}},
+ 'CommunityReport':{'reason':{'type':'string','minLength':1,'maxLength':500}},
+ 'Moderation':{'status':{'type':'string','enum':['visible','hidden']},'reason':{'type':'string','minLength':1,'maxLength':500}},
  'AttendanceUpdate':{'status':{'type':'string','const':'attended'}},
 }
 components={name:{'type':'object','properties':props,'required':[key for key in props if not(name=='Event' and key in ['tournament_id','opponent','home_score','away_score'])],'additionalProperties':False} for name,props in schemas.items()}
@@ -27,7 +31,8 @@ def add(path,method,summary,body=None,public=False,paginated=False,filters=(),cr
  op={'summary':summary,'operationId':method+'_'+path.strip('/').replace('/','_').replace('{','').replace('}','').replace('-','_'),'responses':{str(201 if created else 200):{'description':'Success','content':{'application/json':{'schema':{'$ref':'#/components/schemas/Response'}}}}}}
  if public:op['security']=[]
  params=[]
- if '{id}' in path:params.append({'name':'id','in':'path','required':True,'schema':{'type':'integer','minimum':1}})
+ import re
+ for name in re.findall(r'\{([^}]+)\}',path):params.append({'name':name,'in':'path','required':True,'schema':{'type':'integer','minimum':1}})
  if method!='get':params.append({'name':'X-CSRF-Token','in':'header','required':True,'description':'Fetch from auth/session; preserve its session cookie. Token rotates after login/logout.','schema':{'type':'string'}})
  if paginated:
   params.extend([{'name':'page','in':'query','schema':{'type':'integer','minimum':1,'maximum':100000,'default':1}},{'name':'per_page','in':'query','schema':{'type':'integer','minimum':1,'maximum':100,'default':20}}])
@@ -68,5 +73,21 @@ add('/admin/reports','get','Club, tournament and booking aggregates')
 add('/admin/audit-logs','get','Paginated administration audit history',paginated=True)
 add('/results','get','Recorded match scores',public=True,paginated=True,filters=['tournament_id'])
 add('/standings','get','Club standings with win=3/draw=1/loss=0',public=True,filters=['tournament_id'])
+add('/clubs/{club_id}/community','get','Approved-member club summary')
+add('/clubs/{club_id}/members','get','Approved-member roster without contact details',paginated=True)
+add('/clubs/{club_id}/posts','get','Visible club feed for approved members',paginated=True)
+add('/clubs/{club_id}/posts','post','Share a plain-text post with your club','CommunityPost',created=True)
+add('/clubs/{club_id}/posts/{post_id}','get','Read one visible club post')
+add('/clubs/{club_id}/posts/{post_id}','patch','Edit your own post; hidden posts stay hidden','CommunityPost')
+add('/clubs/{club_id}/posts/{post_id}','delete','Erase your post and its linked comments/reactions/reports','Empty')
+add('/clubs/{club_id}/posts/{post_id}/comments','get','Read visible-post comments',paginated=True)
+add('/clubs/{club_id}/posts/{post_id}/comments','post','Comment on a club post','CommunityComment',created=True)
+add('/clubs/{club_id}/posts/{post_id}/comments/{comment_id}','delete','Remove own comment; administrators may moderate comments','Empty')
+add('/clubs/{club_id}/posts/{post_id}/reaction','put','Add one reaction idempotently','Empty')
+add('/clubs/{club_id}/posts/{post_id}/reaction','delete','Remove your reaction idempotently','Empty')
+add('/clubs/{club_id}/posts/{post_id}/reports','post','Privately report a post once','CommunityReport',created=True)
+add('/admin/community','get','Admin-only post moderation queue',paginated=True,filters=['status'])
+add('/admin/community/posts/{post_id}/reports','get','Admin-only report details',paginated=True)
+add('/admin/community/posts/{post_id}','patch','Hide or restore a post and resolve reports','Moderation')
 (ROOT/'public/assets/openapi.json').write_text(json.dumps(spec,indent=2)+'\n')
 print('Generated OpenAPI contract:',sum(len(v) for v in spec['paths'].values()),'operations')

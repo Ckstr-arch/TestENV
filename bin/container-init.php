@@ -13,5 +13,6 @@ require __DIR__.'/migrate.php';
 if (config('DEMO_MODE')==='1') {
  require __DIR__.'/seed.php';
  $argv=['demo-users.php','--confirm-demo']; require __DIR__.'/demo-users.php';
+ require __DIR__.'/demo-community.php';
 }
 echo "Container application initialization completed.\n";

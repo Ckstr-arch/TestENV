@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__.'/models.php';
+require_once __DIR__.'/community.php';
 function action_result(string $redirect, string $message='', array $data=[]): array {
  return ['redirect'=>$redirect,'message'=>$message,'data'=>$data];
 }
@@ -10,6 +11,8 @@ function handle_action(): never {
  go($result['redirect']);
 }
 function perform_action(string $action): array {
+ if (str_starts_with($action,'community_')) return community_action($action);
+ if ($action==='moderate_post') return moderate_post();
  if ($action==='register') {
   $name=text('name',100); $email=strtolower(text('email',190)); $sid=text('student_id',30); $faculty=text('faculty',80); $password=(string)($_POST['password']??'');
   if (!filter_var($email,FILTER_VALIDATE_EMAIL) || !preg_match('/^[A-Za-z0-9-]{3,30}$/D',$sid)) throw new DomainException('Enter a valid email and student ID.');

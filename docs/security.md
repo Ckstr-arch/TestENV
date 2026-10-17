@@ -32,3 +32,7 @@ Deleting parent records cascades linked participation where defined in the schem
 ## Disposable development accounts
 
 The explicit development demo seeder creates known administrator/student test identities and a known authenticator key for the demo athlete. It refuses production and never overwrites existing identities. These are not safe production accounts. Use a new production database and provision a real administrator privately; do not publish a demo database snapshot containing known logins. Docker demo mode is opt-in through DEMO_MODE=1 and requires APP_ENV=development. A local Docker encryption key generated in var/app.key is private, persisted in app_data and absent from the source ZIP.
+
+## Club community controls
+
+Every feed/member/comment/reaction request rechecks approved club membership or administrator status. User IDs come from the authenticated session. Post ownership is enforced for editing, and editing hidden content never restores visibility. Members see plain-text posts/comments with escaped HTML output; personal roster contact details and report reasons remain private. Administrators review reports and supply a reason when hiding/restoring posts. Theme preference is the only data stored in localStorage. Migrations and development seeds preserve existing data, including enrolled 2FA secrets.

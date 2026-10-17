@@ -119,3 +119,27 @@ Error envelope:
 | 500 / 503 | Unexpected server/database service failure; use request ID for diagnosis |
 
 Errors never return SQL, password hashes, stored authenticator secrets or stack traces. The server logs an internal request ID for unexpected errors. Clients must not automatically replay a mutation after a network failure: it may already have been committed. Fetch current state before retrying.
+
+## Club communities (v1 extension)
+
+All community endpoints require a signed-in administrator or a student with **approved membership in that exact club**. Pending/rejected members and former members have no feed, roster, comment or reaction access. Public club browsing remains available. The roster exposes names, faculty and join date, never emails, student IDs or authentication data.
+
+| Method | Route | Purpose |
+|---|---|---|
+| GET | `/clubs/{club_id}/community` | Club summary and live member/post/session totals |
+| GET | `/clubs/{club_id}/members` | Paginated approved-member roster |
+| GET, POST | `/clubs/{club_id}/posts` | Paginated visible feed / create a post |
+| GET, PATCH, DELETE | `/clubs/{club_id}/posts/{post_id}` | Read visible post / author edit / author or admin deletion |
+| GET, POST | `/clubs/{club_id}/posts/{post_id}/comments` | Paginated comments / add comment |
+| DELETE | `/clubs/{club_id}/posts/{post_id}/comments/{comment_id}` | Author or admin removes a comment |
+| PUT, DELETE | `/clubs/{club_id}/posts/{post_id}/reaction` | Add/remove your one reaction idempotently |
+| POST | `/clubs/{club_id}/posts/{post_id}/reports` | Submit one private report per member/post |
+| GET | `/admin/community` | Moderation list; status filter `reported`, `visible`, `hidden`, or omitted |
+| GET | `/admin/community/posts/{post_id}/reports` | Paginated private report details |
+| PATCH | `/admin/community/posts/{post_id}` | Hide/restore and resolve pending reports |
+
+Post payload: `{"body":"Team update"}` (1–5000 characters). Comment payload: `{"body":"See you there"}` (1–2000). Report payload: `{"reason":"Please review this"}` (1–500). Moderation payload: `{"status":"hidden","reason":"Reviewed by sports office"}`; `visible` restores/keeps a post. Reason is required and limited to 500 characters. Other mutations use `{}`. All requests use the existing cookie, JSON, CSRF and origin controls. New posts/comments/reports return 201. Duplicate reports return 409. Posting, commenting, editing and reporting are separately rate-limited.
+
+Post/comment text is plain text and escaped when rendered. Hidden posts and their comments are absent from member feeds. Editing a hidden post cannot restore it; only an administrator can. Deletion erases post text and removes its comments/reactions/reports; the deleted post ID remains as a tombstone and cannot be restored. Moderation decisions and post changes are audited. Hiding/restoring content and resolving reports occur in one transaction.
+
+The browser supports native form fallbacks as well as REST submissions. Feed pages show 10 posts and the latest 20 comments per post; API clients can paginate all visible comments. The member page shows up to 100 people; the API roster is paginated. Admin HTML moderation pages show 20 posts per page.

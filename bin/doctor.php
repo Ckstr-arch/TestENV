@@ -11,7 +11,7 @@ try { app_key(); report(true,'APP_KEY has the required length'); } catch (Throwa
 try {
  report((int)query('SELECT 1')->fetchColumn()===1,'Database connection');
  report((string)query('SELECT @@session.time_zone')->fetchColumn()==='+05:30','Database Sri Lanka timezone');
- foreach (['users','clubs','events','tournaments','resources','bookings'] as $table) { query("SELECT COUNT(*) FROM $table"); report(true,'Table '.$table); }
+ foreach (['users','clubs','events','tournaments','resources','bookings','club_posts','club_comments','club_reactions','club_reports','schema_migrations'] as $table) { query("SELECT COUNT(*) FROM $table"); report(true,'Table '.$table); }
 } catch (Throwable) { report(false,'Database connection/schema unavailable; check .env and run bin/migrate.php'); }
 report(is_writable(ROOT.'/var') || is_writable(ROOT),'Private session directory can be written');
 exit($failed?1:0);

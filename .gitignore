@@ -3,3 +3,4 @@
 /.runtime/
 .env.docker
 __pycache__/
+/compose.mac.yaml

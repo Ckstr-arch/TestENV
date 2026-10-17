@@ -77,6 +77,15 @@ function api_dispatch(): never {
  if (!is_string($path) || !str_starts_with($path,'/api/v1/')) throw new RequestError(404,'API route not found.');
  $route=rtrim(substr($path,8),'/');
  $routes=[
+  'clubs/[1-9][0-9]*/(community|members)'=>['GET'],
+  'clubs/[1-9][0-9]*/posts'=>['GET','POST'],
+  'clubs/[1-9][0-9]*/posts/[1-9][0-9]*'=>['GET','PATCH','DELETE'],
+  'clubs/[1-9][0-9]*/posts/[1-9][0-9]*/comments'=>['GET','POST'],
+  'clubs/[1-9][0-9]*/posts/[1-9][0-9]*/comments/[1-9][0-9]*'=>['DELETE'],
+  'clubs/[1-9][0-9]*/posts/[1-9][0-9]*/reaction'=>['PUT','DELETE'],
+  'clubs/[1-9][0-9]*/posts/[1-9][0-9]*/reports'=>['POST'],
+  'admin/community/posts/[1-9][0-9]*/reports'=>['GET'],
+  'admin/community'=>['GET'],'admin/community/posts/[1-9][0-9]*'=>['PATCH'],
   'health'=>['GET'],'auth/session'=>['GET'],'auth/register'=>['POST'],'auth/login'=>['POST'],'auth/2fa'=>['POST'],'auth/logout'=>['POST'],
   'me'=>['GET'],'me/security'=>['GET'],'me/2fa/setup'=>['POST'],'me/2fa'=>['POST','DELETE'],
   'me/memberships'=>['GET'],'me/registrations'=>['GET'],'me/attendance'=>['GET'],'me/bookings'=>['GET'],
@@ -102,6 +111,7 @@ function api_dispatch(): never {
   if (isset($_SERVER['HTTP_ORIGIN']) && rtrim($_SERVER['HTTP_ORIGIN'],'/')!==rtrim(config('APP_URL'),'/')) throw new RequestError(403,'Cross-origin requests are not allowed.');
   $payload=api_payload();
  }
+ community_api($route,$method,$payload);
  if ($route==='health') {
   query('SELECT 1'); json_response(['status'=>'ok','service'=>'NSBM SportsHub','version'=>'1']);
  }

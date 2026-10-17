@@ -24,7 +24,7 @@ function query(string $sql, array $args = []): PDOStatement { $s = db()->prepare
 function rows(string $sql, array $args = []): array { return query($sql,$args)->fetchAll(); }
 function one(string $sql, array $args = []): ?array { return query($sql,$args)->fetch() ?: null; }
 function e(mixed $value): string { return htmlspecialchars((string)$value, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'); }
-function go(string $page): never { header('Location: /?page='.rawurlencode($page), true, 303); exit; }
+function go(string $page): never { header('Location: /?page='.str_replace(['%26','%3D'],['&','='],rawurlencode($page)), true, 303); exit; }
 function flash(string $message): void { $_SESSION['flash'] = $message; }
 function user(): ?array { return isset($_SESSION['user_id']) ? one('SELECT * FROM users WHERE id=?', [$_SESSION['user_id']]) : null; }
 function require_user(): array { $u=user(); if (!$u) { if (defined('REST_REQUEST')) throw new RequestError(401,'Sign in to continue.'); flash('Please sign in to continue.'); go('login'); } return $u; }

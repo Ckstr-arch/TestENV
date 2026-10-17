@@ -2,6 +2,12 @@
 
 A PHP/MySQL sports club management application for NSBM WAD Batch 26.1 IFSL, topic 3. HTML, CSS, and vanilla JavaScript provide the interface; PHP renders pages and exposes a versioned JSON REST API. JavaScript sends website mutations through that API; native forms remain a fallback. The API and rendered interface share validation and business services.
 
+## Performance UI and club communities
+
+The app now uses the approved navy/lime Performance Dark design with a complete light theme, a theme switch before the profile menu, student/admin sidebars, responsive drawer navigation and live dashboard counts. Open a club for its community, member directory and schedule. Approved members can post/comment/react/report; administrators have a private moderation queue. See [UI, migration and safe Mac Docker update instructions](docs/ui-and-community.md).
+
+Existing Docker installations: pull the changes and run your usual `up --build -d` command with the **same** Compose project name and files. Startup applies the additive migration automatically; **do not remove database volumes**. Native installations run `php bin/migrate.php` before starting the new code.
+
 ## What works
 
 - Student registration and login; distinct student and administrator portals.
@@ -22,7 +28,7 @@ PHP 8.2+ with PDO MySQL, mbstring, sodium and Argon2id support; MySQL 8+ or Mari
 
 1. Create a UTF-8 MySQL database and a dedicated database user. Give it schema privileges for initial setup; restrict the runtime user to SELECT/INSERT/UPDATE/DELETE for production.
 2. Copy `.env.example` to `.env`; enter your local database settings. Generate `APP_KEY` with `php -r 'echo base64_encode(random_bytes(32)), PHP_EOL;'` and store it privately. Never commit `.env`.
-3. Run `php bin/migrate.php`. This creates missing tables and preserves existing ones; it is not a schema versioning system.
+3. Run `php bin/migrate.php`. This creates missing tables and applies versioned additive migrations while preserving existing data.
 4. Optionally run `php bin/seed.php` for development sports data. It creates no shared login credentials. Do not seed production. For disposable local test logins, run `php bin/demo-users.php --confirm-demo`. Sample dates are relative to the time seeding runs.
 5. Create the first administrator without putting credentials into command arguments or shell history:
 
@@ -54,24 +60,26 @@ The cloud startup script is specific to this prepared workspace. Use standard se
 
 ```bash
 php tests/security.php
-# Create a separate database named sportshub_test and grant the configured DB user access first.
+# Create the separate sportshub_test database and grant the configured DB user access first.
+# These suites reset that disposable database. Run them sequentially.
 python tests/integration.py
 python tests/api.py
-# For the prepared cloud toolchain:
-PHP_BIN=/workspace/toolchain/bin/php python tests/integration.py
-PHP_BIN=/workspace/toolchain/bin/php python tests/api.py
-python tests/api.py
+python tests/community.py
+# In the prepared cloud workspace, supply the PHP path, for example:
+PHP_BIN=/workspace/toolchain/bin/php python tests/community.py
+# Optional Playwright coverage (see the local setup guide):
+python tests/browser.py
 ```
 
-**The integration runner drops/recreates tables in `sportshub_test` only.** Never store real data there. It runs a temporary HTTP server on port 8081, creates random test passwords and exercises actual forms and MySQL writes. It does not modify the main `sportshub` database. There is a short wait for a fresh TOTP time step.
+**The integration runners drop/recreate tables in `sportshub_test` only.** Never store real data there. It runs a temporary HTTP server on port 8081, creates random test passwords and exercises actual forms and MySQL writes. It does not modify the main `sportshub` database. Run suites sequentially because they share the same disposable schema. There is a short wait for a fresh TOTP time step.
 
-Validated in this workspace: 17 security checks and 71 HTTP/database checks, plus 130 REST API checks, including all four administrator CRUD areas, authorization, CSRF, approvals, scores, attendance, booking collisions, TOTP login/replay handling, recovery codes, pagination, malformed input and rate limiting. The same 218 checks also passed inside the Docker stack. Chromium checks exercised REST-backed registration, login, club approval, session/tournament registration, booking, admin CRUD and 2FA enrollment/recovery/disable, plus public pages and mobile navigation at 1440px and 390px, with no horizontal overflow or JavaScript errors.
+Validated in this workspace: 17 security checks, 71 HTTP/database checks, 130 REST API checks, and 73 community checks, including all four administrator CRUD areas, authorization, CSRF, approvals, scores, attendance, booking collisions, TOTP login/replay handling, recovery codes, pagination, malformed input and rate limiting. All 291 checks also passed in Docker, including an upgrade that preserved existing users and the private encryption key. Chromium checks exercised REST-backed registration, login, club approval, session/tournament registration, booking, admin CRUD and 2FA enrollment/recovery/disable, plus public pages and mobile navigation at 1440px and 390px, with no horizontal overflow or JavaScript errors.
 
 ## Structure
 
 - `public/`: web document root, CSS/JavaScript and supplied visual assets.
 - `app/`: configuration/database helpers, security, mutations, models, layout and views.
-- `database/schema.sql`: relational schema with foreign keys and uniqueness constraints.
+- `database/`: core schema, foreign keys, uniqueness constraints and versioned additive migrations.
 - `bin/`: migration, opt-in demo seed, administrator creation and cloud startup.
 - `tests/`: RFC TOTP/security checks, form/REST database integration suites, and optional Chromium workflows.
 - `docs/`: platform setup, REST/OpenAPI, security, architecture, deployment, validation and submission guidance.

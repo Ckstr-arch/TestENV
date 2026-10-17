@@ -3,7 +3,7 @@ declare(strict_types=1);
 require_once __DIR__.'/../app/bootstrap.php';
 if (PHP_SAPI!=='cli') exit;
 if (config('APP_ENV')==='production') { fwrite(STDERR,"Demo seeding is disabled in production.\n"); exit(1); }
-if (query('SELECT COUNT(*) FROM clubs')->fetchColumn()) { echo "Existing clubs detected; demo seed skipped.\n"; exit; }
+if (query('SELECT COUNT(*) FROM clubs')->fetchColumn()) { echo "Existing clubs detected; demo seed skipped.\n"; return; }
 db()->beginTransaction();
 try {
  foreach ([['Green Warriors Cricket','Cricket','From the nets to match day. Build your technique and represent our campus together.','Kasun Perera','Main cricket ground',50],['NSBM Football Club','Football','Find your rhythm, build your team, and take your game to the next level. All abilities welcome.','Dilan Silva','Football ground',40],['Campus Basketball','Basketball','Fast breaks, new friendships, and a shared love of the game. Join our weekly court sessions.','Nimali Fernando','Indoor sports complex',35],['Athletics Collective','Athletics','Chase your personal best with a supportive community of sprinters and distance runners.','Amal Jayasinghe','Athletics track',60]] as $c) query('INSERT INTO clubs(name,sport,description,coach,location,capacity) VALUES(?,?,?,?,?,?)',$c);
