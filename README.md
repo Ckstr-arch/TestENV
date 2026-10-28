@@ -2,6 +2,18 @@
 
 A PHP/MySQL sports club management application for NSBM WAD Batch 26.1 IFSL, topic 3. HTML, CSS, and vanilla JavaScript provide the interface; PHP renders pages and exposes a versioned JSON REST API. JavaScript sends website mutations through that API; native forms remain a fallback. The API and rendered interface share validation and business services.
 
+## Learn, contribute and assemble
+
+Start with the [learning map](LEARNING_MAP.md) and [baseline audit](Assemble/01-repository-assembly-map.md). The existing application remains the single canonical runtime.
+
+- [Stage 01 — Frontend and UX](Stage-01-Frontend-UX/README.md)
+- [Stage 02 — Student experience](Stage-02-Student-Experience/README.md)
+- [Stage 03 — Admin operations](Stage-03-Admin-Operations/README.md)
+- [Stage 04 — Backend, database and security](Stage-04-Backend-Database-Security/README.md)
+- [Assemble — integration, local setup, hosting, report and video](Assemble/README.md)
+
+These assisted learning guides do not assign student authorship. See the [genuine contribution workflow](Assemble/02-git-github-team-workflow.md) and [current validation evidence](Assemble/16-evidence-and-artifact-register.md). Compose uses MariaDB locally; the assignment mandates MySQL, so verify MySQL 8 or obtain lecturer approval before declaring compliance.
+
 ## Performance UI and club communities
 
 The app now uses the approved navy/lime Performance Dark design with a complete light theme, a theme switch before the profile menu, student/admin sidebars, responsive drawer navigation and live dashboard counts. Open a club for its community, member directory and schedule. Approved members can post/comment/react/report; administrators have a private moderation queue. See [UI, migration and safe Mac Docker update instructions](docs/ui-and-community.md).
