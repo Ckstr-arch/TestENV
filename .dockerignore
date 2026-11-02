@@ -5,3 +5,5 @@ var
 __pycache__
 *.zip
 compose.mac.yaml
+# Keep the independent native package and its private local state out of the legacy image.
+/backup/
