@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nonproduction layout clinic · SportsHub learning</title>
+<style>
+*{box-sizing:border-box}body{margin:0;padding:24px;font:16px/1.5 system-ui;background:#0b1220;color:#e8eff5}main{max-width:960px;margin:auto}h1{font-size:clamp(25px,4vw,42px)}button{font:inherit;padding:10px 16px;background:#b8f34a;color:#0b1220;border:2px solid transparent;border-radius:6px;cursor:pointer}button:focus-visible{outline:3px solid #e8eff5;outline-offset:3px}.clinic-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:16px;margin-top:24px}.clinic-grid.flex{display:flex;flex-wrap:wrap}.clinic-grid.flex article{flex:1 1 220px}article{min-width:0;border:1px solid #8194a8;border-radius:8px;padding:20px;background:#142438}article h2{font-size:20px;margin-top:0}article p{overflow-wrap:anywhere}.comparison{position:relative;min-height:120px;border:1px dashed #b8f34a;margin:24px 0;padding:16px}.placed{position:absolute;right:10px;bottom:10px;background:#b8f34a;color:#0b1220;padding:6px}small{display:block;margin-top:8px}#mode{font-weight:bold}
+</style>
+</head>
+<body><main>
+<p><strong>SAFE EXERCISE · not deployed source</strong></p>
+<h1>Predict how these cards fit.</h1>
+<p>This standalone teaching file uses no PHP,API,database,storage or external resources. The auto-fit technique here is an alternative exercise,not a copy of SportsHub's explicit breakpoint rules.</p>
+<button id="switch" type="button" aria-pressed="false">Switch to Flex layout</button>
+<p aria-live="polite">Current layout: <span id="mode">Grid with auto-fit</span></p>
+<section class="clinic-grid" aria-label="Synthetic layout cards">
+<article><h2>One · Short title</h2><p>Measure the track,then account for padding,border and gap.</p></article>
+<article><h2>Two · A longer title</h2><p>A deliberatelylongunbrokenstringletsustestwrappingwithoutpersonaldata.</p></article>
+<article><h2>Three · Compare axes</h2><p>Grid shares tracks; Flex wraps and distributes available line space.</p></article>
+</section>
+<div class="comparison">Relative container remains in normal flow.<span class="placed">Absolute child</span></div>
+<small>Inspect at900/600/390 CSS pixels. Reload to restore all temporary DevTools changes. Do not copy this into public/ as a second application.</small>
+</main>
+<script>
+const grid=document.querySelector('.clinic-grid');
+const button=document.querySelector('#switch');
+button.addEventListener('click',()=>{
+ const flex=grid.classList.toggle('flex');
+ button.setAttribute('aria-pressed',String(flex));
+ button.textContent=flex?'Switch to Grid layout':'Switch to Flex layout';
+ document.querySelector('#mode').textContent=flex?'Flex with wrapping':'Grid with auto-fit';
+});
+</script>
+</body></html>

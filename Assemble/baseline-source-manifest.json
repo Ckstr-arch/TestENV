@@ -1,0 +1,584 @@
+{
+  "head": "f81eab54ebe7179e1763f364d6b8d4f564c36541",
+  "spec_commit": "096258d302367aba198a83147c5f985fa74477b7",
+  "branch": "main",
+  "preexisting_changes": [],
+  "files": [
+    {
+      "path": ".dockerignore",
+      "owner": "Assemble",
+      "guide": "Assemble/files/_dockerignore.md",
+      "category": "configuration/deployment",
+      "sha256": "dc8e3613c88c5568d46ccc7233549ac6637547fc856ae204b698025f3a7bda09",
+      "lines": 7,
+      "origin": "local HEAD"
+    },
+    {
+      "path": ".env.docker.example",
+      "owner": "Assemble",
+      "guide": "Assemble/files/_env_docker_example.md",
+      "category": "configuration/deployment",
+      "sha256": "644c58b457ff2a1ff496cc846985dc10d50025ab7ad8ecd97c3d51af30997252",
+      "lines": 10,
+      "origin": "local HEAD"
+    },
+    {
+      "path": ".env.example",
+      "owner": "Assemble",
+      "guide": "Assemble/files/_env_example.md",
+      "category": "configuration/deployment",
+      "sha256": "39925690d9b489f20d5719e367bf979f07661da66e0efd1a3bb8aec3f081dece",
+      "lines": 9,
+      "origin": "local HEAD"
+    },
+    {
+      "path": ".gitattributes",
+      "owner": "Assemble",
+      "guide": "Assemble/files/_gitattributes.md",
+      "category": "configuration/deployment",
+      "sha256": "1623d49e88653b553a9b3a494898cc96c27f664fd14651e876a756a50f2b933e",
+      "lines": 6,
+      "origin": "local HEAD"
+    },
+    {
+      "path": ".gitignore",
+      "owner": "Assemble",
+      "guide": "Assemble/files/_gitignore.md",
+      "category": "configuration/deployment",
+      "sha256": "ee058d1caf6558ebdd0ff32a8a1eaf85836439f4eedf4992c33b88a318318896",
+      "lines": 6,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "Dockerfile",
+      "owner": "Assemble",
+      "guide": "Assemble/files/Dockerfile.md",
+      "category": "configuration/deployment",
+      "sha256": "fd2e7411f675609b039958eb068f9470f02c93f4b68b4228ae01ae1434aa10f9",
+      "lines": 25,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "README.md",
+      "owner": "Assemble",
+      "guide": "Assemble/files/README_md.md",
+      "category": "legacy documentation/specification",
+      "sha256": "7d9d3afc5c38086d2075693585fb09a12a74432eaf25b9dd2428822216c2afdb",
+      "lines": 103,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "app/actions.php",
+      "owner": "Stage-04-Backend-Database-Security",
+      "guide": "Stage-04-Backend-Database-Security/files/app__actions_php.md",
+      "category": "runtime source",
+      "sha256": "3d89f83e42e4f09fe63068c4e3e5d43babdfe9ac58d927d72b91fb0614d0cc6b",
+      "lines": 104,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "app/api.php",
+      "owner": "Stage-04-Backend-Database-Security",
+      "guide": "Stage-04-Backend-Database-Security/files/app__api_php.md",
+      "category": "runtime source",
+      "sha256": "00c25e43d175b8e31a78bfece69a3a016db0bf9397c85e9f5513da401805b96f",
+      "lines": 193,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "app/bootstrap.php",
+      "owner": "Stage-04-Backend-Database-Security",
+      "guide": "Stage-04-Backend-Database-Security/files/app__bootstrap_php.md",
+      "category": "runtime source",
+      "sha256": "68d35068924242c27a7ac52cd2d9bca20d8c7cec4587303a51ac58f632f21325",
+      "lines": 58,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "app/community.php",
+      "owner": "Stage-02-Student-Experience",
+      "guide": "Stage-02-Student-Experience/files/app__community_php.md",
+      "category": "runtime source",
+      "sha256": "877921de0bf96c4c882379ed8f530b9fb316888edef635f55ebed25e34458122",
+      "lines": 140,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "app/layout.php",
+      "owner": "Stage-01-Frontend-UX",
+      "guide": "Stage-01-Frontend-UX/files/app__layout_php.md",
+      "category": "runtime source",
+      "sha256": "64ecc7632e2e92d4933a4ef2b4e9b14e45277e77be79168c436d46b314454b85",
+      "lines": 35,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "app/models.php",
+      "owner": "Stage-04-Backend-Database-Security",
+      "guide": "Stage-04-Backend-Database-Security/files/app__models_php.md",
+      "category": "runtime source",
+      "sha256": "be368a12de1a92d7c0d24d1e3b92beaf959c1a9fc7e4e4867e231be0f6a4af0e",
+      "lines": 78,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "app/portal-views.php",
+      "owner": "Stage-02-Student-Experience",
+      "guide": "Stage-02-Student-Experience/files/app__portal-views_php.md",
+      "category": "runtime source",
+      "sha256": "cf3e106f37cc820cfa2668767d77521f7fcf73631d4bb37249e3e4fb4e1e8d6d",
+      "lines": 49,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "app/security.php",
+      "owner": "Stage-04-Backend-Database-Security",
+      "guide": "Stage-04-Backend-Database-Security/files/app__security_php.md",
+      "category": "runtime source",
+      "sha256": "b789b2b929bde9bd43c4b8e52a40c2188484d0c01a9744728d40328dadfebd46",
+      "lines": 48,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "app/ui.php",
+      "owner": "Stage-01-Frontend-UX",
+      "guide": "Stage-01-Frontend-UX/files/app__ui_php.md",
+      "category": "runtime source",
+      "sha256": "435570dc0ee943dcb3d929112e86bfd34f9441c872c2dbb0abc18e54d6f4d35f",
+      "lines": 31,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "app/views.php",
+      "owner": "Stage-02-Student-Experience",
+      "guide": "Stage-02-Student-Experience/files/app__views_php.md",
+      "category": "runtime source",
+      "sha256": "292bb4361156cc23679888f8318f6ee56fe4bb3abbe5529fb366fd1119efb096",
+      "lines": 75,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "bin/build-openapi.py",
+      "owner": "Stage-04-Backend-Database-Security",
+      "guide": "Stage-04-Backend-Database-Security/files/bin__build-openapi_py.md",
+      "category": "utility",
+      "sha256": "5af5265bbd545a05d565e80590c7f31f942a8fdb37475edb96c5886a294c5373",
+      "lines": 93,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "bin/cloud-start.sh",
+      "owner": "Stage-04-Backend-Database-Security",
+      "guide": "Stage-04-Backend-Database-Security/files/bin__cloud-start_sh.md",
+      "category": "utility",
+      "sha256": "0431b6fbc9f7b852904e89f3d53cf40af280862a4d24eced0676defc524c7c28",
+      "lines": 42,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "bin/container-init.php",
+      "owner": "Stage-04-Backend-Database-Security",
+      "guide": "Stage-04-Backend-Database-Security/files/bin__container-init_php.md",
+      "category": "utility",
+      "sha256": "ee12f8ad437d78172db4874e616f751e3559eaa9f254355eb9daee83bb61ee6e",
+      "lines": 18,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "bin/create-admin.php",
+      "owner": "Stage-04-Backend-Database-Security",
+      "guide": "Stage-04-Backend-Database-Security/files/bin__create-admin_php.md",
+      "category": "utility",
+      "sha256": "202b61e66965ee2729b8b567ab7fc42056dcd3793ecf2e8956620fe4f587661c",
+      "lines": 9,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "bin/demo-community.php",
+      "owner": "Stage-04-Backend-Database-Security",
+      "guide": "Stage-04-Backend-Database-Security/files/bin__demo-community_php.md",
+      "category": "utility",
+      "sha256": "4afc17b3d912bee55a099f2088d3742d2ae88a1a2e7ba268a75f73cea240d084",
+      "lines": 18,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "bin/demo-users.php",
+      "owner": "Stage-04-Backend-Database-Security",
+      "guide": "Stage-04-Backend-Database-Security/files/bin__demo-users_php.md",
+      "category": "utility",
+      "sha256": "3910c6f76f665c9ebf185dfc19abc00b2acc1cfbb5e38a5b0b3aa052b45304a4",
+      "lines": 30,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "bin/doctor.php",
+      "owner": "Stage-04-Backend-Database-Security",
+      "guide": "Stage-04-Backend-Database-Security/files/bin__doctor_php.md",
+      "category": "utility",
+      "sha256": "34757ef67fd7631dbdcabd077ec8971a9acb81721561c2317a79613d0475c01f",
+      "lines": 17,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "bin/migrate.php",
+      "owner": "Stage-04-Backend-Database-Security",
+      "guide": "Stage-04-Backend-Database-Security/files/bin__migrate_php.md",
+      "category": "utility",
+      "sha256": "25f572bbe9ef5d8f8c99f6d98829c1051ce39d4c27fcfc355657f0ea2efecb10",
+      "lines": 20,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "bin/seed.php",
+      "owner": "Stage-04-Backend-Database-Security",
+      "guide": "Stage-04-Backend-Database-Security/files/bin__seed_php.md",
+      "category": "utility",
+      "sha256": "8558dcd8af31101494cef8eec9b933f6a51eb5e06c6f2c4c28368efd61a39eb6",
+      "lines": 17,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "bin/setup.php",
+      "owner": "Stage-04-Backend-Database-Security",
+      "guide": "Stage-04-Backend-Database-Security/files/bin__setup_php.md",
+      "category": "utility",
+      "sha256": "ee5319723ea1f2ba26ea152e499511eb07c92af72d4f7389d3cdc1b77690798c",
+      "lines": 12,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "compose.yaml",
+      "owner": "Assemble",
+      "guide": "Assemble/files/compose_yaml.md",
+      "category": "configuration/deployment",
+      "sha256": "bc4ed3912a938b694a995775f0f20ba46ebb1e872f78812aec258cfb65b85807",
+      "lines": 45,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "database/migrations/20261017_club_communities.sql",
+      "owner": "Stage-04-Backend-Database-Security",
+      "guide": "Stage-04-Backend-Database-Security/files/database__migrations__20261017_club_communities_sql.md",
+      "category": "database",
+      "sha256": "c02a2346be72e1c8b0116974c31f45aa80dbdf8c645fbeca2769a73b4c73cde5",
+      "lines": 34,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "database/schema.sql",
+      "owner": "Stage-04-Backend-Database-Security",
+      "guide": "Stage-04-Backend-Database-Security/files/database__schema_sql.md",
+      "category": "database",
+      "sha256": "2f192a735ef84006cbae0d51888a8df6cc323382483c502538b96d1691bd1d81",
+      "lines": 67,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "docker/apache.conf",
+      "owner": "Assemble",
+      "guide": "Assemble/files/docker__apache_conf.md",
+      "category": "configuration/deployment",
+      "sha256": "9df5e80468d70e5f6f27e490c23591c6470f3df4c9b4606ee83e7f66c957081e",
+      "lines": 10,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "docker/entrypoint.sh",
+      "owner": "Assemble",
+      "guide": "Assemble/files/docker__entrypoint_sh.md",
+      "category": "configuration/deployment",
+      "sha256": "210370c103413d23c59dc5ccf421308d44073d998d12415fa4f620ba463a5494",
+      "lines": 8,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "docker/init-test.sql",
+      "owner": "Assemble",
+      "guide": "Assemble/files/docker__init-test_sql.md",
+      "category": "configuration/deployment",
+      "sha256": "fa7b00a1c3f553bda68128079ddfbb652f618cf8f4761a33bac650b5c689c8ab",
+      "lines": 3,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "docs/api.md",
+      "owner": "Assemble",
+      "guide": "Assemble/files/docs__api_md.md",
+      "category": "legacy documentation/specification",
+      "sha256": "0c02efb31f65d5a212b31251b589762b4e688a54c04690d2d45766f0f6890499",
+      "lines": 145,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "docs/architecture.md",
+      "owner": "Assemble",
+      "guide": "Assemble/files/docs__architecture_md.md",
+      "category": "legacy documentation/specification",
+      "sha256": "298121d424bebd45d38183e6d47cfc661a6b36a0edaa04a3756f64f93e1d07ca",
+      "lines": 31,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "docs/local-setup.md",
+      "owner": "Assemble",
+      "guide": "Assemble/files/docs__local-setup_md.md",
+      "category": "legacy documentation/specification",
+      "sha256": "0c038ceaf027370327448d9e967cf784fdd3d4e7d511da9a0d4be943b43c350f",
+      "lines": 313,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "docs/project-report.md",
+      "owner": "Assemble",
+      "guide": "Assemble/files/docs__project-report_md.md",
+      "category": "legacy documentation/specification",
+      "sha256": "d16946e3dde43f1eadf86325379e441e27d1f9b300559190211abcab9b096a06",
+      "lines": 67,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "docs/screenshots/admin-dark.png",
+      "owner": "Stage-01-Frontend-UX",
+      "guide": "Stage-01-Frontend-UX/files/docs__screenshots__admin-dark_png.md",
+      "category": "binary asset/evidence",
+      "sha256": "d29645b64cd20b49301e832325a2f609a61fb63255289a4e8d74e71114a2644b",
+      "lines": null,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "docs/screenshots/admin-light.png",
+      "owner": "Stage-01-Frontend-UX",
+      "guide": "Stage-01-Frontend-UX/files/docs__screenshots__admin-light_png.md",
+      "category": "binary asset/evidence",
+      "sha256": "da828efd29a891e87d4265a1007ad98d05aaebbaf629df252f8848b67c9669e3",
+      "lines": null,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "docs/screenshots/community-dark.png",
+      "owner": "Stage-01-Frontend-UX",
+      "guide": "Stage-01-Frontend-UX/files/docs__screenshots__community-dark_png.md",
+      "category": "binary asset/evidence",
+      "sha256": "a9db9f9b308d3dace0ad8c17b70b6084fe45cf39bdb5346fa0926fe4695d898b",
+      "lines": null,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "docs/screenshots/community-light.png",
+      "owner": "Stage-01-Frontend-UX",
+      "guide": "Stage-01-Frontend-UX/files/docs__screenshots__community-light_png.md",
+      "category": "binary asset/evidence",
+      "sha256": "c2b380693a309a187ea74496183149bc5918e76e969cde09ef9834f20fc9f030",
+      "lines": null,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "docs/screenshots/community-mobile.png",
+      "owner": "Stage-01-Frontend-UX",
+      "guide": "Stage-01-Frontend-UX/files/docs__screenshots__community-mobile_png.md",
+      "category": "binary asset/evidence",
+      "sha256": "4fea952a6726d4a3bbcc0fa0598b1b8d9e61db4b760f1fc3ddd8edb711abc20b",
+      "lines": null,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "docs/screenshots/student-dark.png",
+      "owner": "Stage-01-Frontend-UX",
+      "guide": "Stage-01-Frontend-UX/files/docs__screenshots__student-dark_png.md",
+      "category": "binary asset/evidence",
+      "sha256": "90f9f8bcf41fc5bcb6c22fbb4441b6fc03d9fb8dd6131cebc601f6eaf748e319",
+      "lines": null,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "docs/screenshots/student-light.png",
+      "owner": "Stage-01-Frontend-UX",
+      "guide": "Stage-01-Frontend-UX/files/docs__screenshots__student-light_png.md",
+      "category": "binary asset/evidence",
+      "sha256": "ffc245abc8aed10f9e90fbba3fc0f913205a627f82b28987c6eaf11c9b996441",
+      "lines": null,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "docs/security.md",
+      "owner": "Assemble",
+      "guide": "Assemble/files/docs__security_md.md",
+      "category": "legacy documentation/specification",
+      "sha256": "38b75c9e2ac019327ea06cc3781f71fc7d1aba8f909ecc934c18763089d428f7",
+      "lines": 38,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "docs/ui-and-community.md",
+      "owner": "Assemble",
+      "guide": "Assemble/files/docs__ui-and-community_md.md",
+      "category": "legacy documentation/specification",
+      "sha256": "adfad8b1a8bc2c3a90e0b1a834415496884d54cdeab00187025f7f4d1058b9ea",
+      "lines": 58,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "docs/validation.md",
+      "owner": "Assemble",
+      "guide": "Assemble/files/docs__validation_md.md",
+      "category": "legacy documentation/specification",
+      "sha256": "8c74c7d33e7b6bac826c1a0ea89d8714dae918befb4faff55eb9cfa02eb65016",
+      "lines": 35,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "public/.htaccess",
+      "owner": "Assemble",
+      "guide": "Assemble/files/public___htaccess.md",
+      "category": "configuration/deployment",
+      "sha256": "e012718d1319d928831ee01c36fbab2a6fe4a10afd6e5ac354058782d2addec6",
+      "lines": 4,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "public/api.php",
+      "owner": "Stage-04-Backend-Database-Security",
+      "guide": "Stage-04-Backend-Database-Security/files/public__api_php.md",
+      "category": "runtime source",
+      "sha256": "70edaed045b1b40d2f9c906ed4e5aba2d79cffb372cdcb220eae708316a9c2d1",
+      "lines": 23,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "public/assets/app.css",
+      "owner": "Stage-01-Frontend-UX",
+      "guide": "Stage-01-Frontend-UX/files/public__assets__app_css.md",
+      "category": "runtime source",
+      "sha256": "47ddb49033b27417dfd3db78f78ed3389ed2dfdf71f38263d5ab84169c3b1a5c",
+      "lines": 2285,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "public/assets/app.js",
+      "owner": "Stage-01-Frontend-UX",
+      "guide": "Stage-01-Frontend-UX/files/public__assets__app_js.md",
+      "category": "runtime source",
+      "sha256": "e1dce812e939cccb06463a5809bb0ab0040a81c97b2eff0087bd56f882395057",
+      "lines": 270,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "public/assets/nsbm.png",
+      "owner": "Stage-01-Frontend-UX",
+      "guide": "Stage-01-Frontend-UX/files/public__assets__nsbm_png.md",
+      "category": "binary asset/evidence",
+      "sha256": "3e6a36773c6bad7768937ae3b98e40b924ff5cf6cefbb91b3858d8218683f52c",
+      "lines": null,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "public/assets/openapi.json",
+      "owner": "Stage-04-Backend-Database-Security",
+      "guide": "Stage-04-Backend-Database-Security/files/public__assets__openapi_json.md",
+      "category": "generated API contract",
+      "sha256": "3bdde0a564223f047a60611def7220c300bb36baaa009b68f7381afe1b47bda9",
+      "lines": 13015,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "public/assets/theme-init.js",
+      "owner": "Stage-01-Frontend-UX",
+      "guide": "Stage-01-Frontend-UX/files/public__assets__theme-init_js.md",
+      "category": "runtime source",
+      "sha256": "3b0a58f5a7cb6ed9c044790c5f2961ddcb827ad325cc187fada5a8ebe13a4e2f",
+      "lines": 8,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "public/assets/track.jpg",
+      "owner": "Stage-01-Frontend-UX",
+      "guide": "Stage-01-Frontend-UX/files/public__assets__track_jpg.md",
+      "category": "binary asset/evidence",
+      "sha256": "5944da5397e5933fc8884601e3fd1f081a940667ba29f034f0dab2f47df8ef82",
+      "lines": null,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "public/index.php",
+      "owner": "Stage-04-Backend-Database-Security",
+      "guide": "Stage-04-Backend-Database-Security/files/public__index_php.md",
+      "category": "runtime source",
+      "sha256": "795a17d5ba58e4c3ff10e74265733a3eec0af667d58ae243f706a0f300947c6b",
+      "lines": 26,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "public/router.php",
+      "owner": "Stage-04-Backend-Database-Security",
+      "guide": "Stage-04-Backend-Database-Security/files/public__router_php.md",
+      "category": "runtime source",
+      "sha256": "d182f3b8ae8dd448818e408486a3ecf440067cf823dfe027bb9397bf1e84590a",
+      "lines": 6,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "tests/api.py",
+      "owner": "Stage-04-Backend-Database-Security",
+      "guide": "Stage-04-Backend-Database-Security/files/tests__api_py.md",
+      "category": "verification",
+      "sha256": "8d4d91030d4c4d7daae22f9b515f64c8e2097c634d9ee8497bf85baa7d0eeae8",
+      "lines": 172,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "tests/browser.py",
+      "owner": "Stage-04-Backend-Database-Security",
+      "guide": "Stage-04-Backend-Database-Security/files/tests__browser_py.md",
+      "category": "verification",
+      "sha256": "818e49fe6a2bac9447c323545263476ed1ff59d1ae7de526ca4f52992f315abd",
+      "lines": 115,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "tests/community.py",
+      "owner": "Stage-04-Backend-Database-Security",
+      "guide": "Stage-04-Backend-Database-Security/files/tests__community_py.md",
+      "category": "verification",
+      "sha256": "b0289fc23dfa2c6aea37124d210ca3b60798d93dfc1eff9cd094d96b6fa88f2f",
+      "lines": 145,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "tests/fixtures.php",
+      "owner": "Stage-04-Backend-Database-Security",
+      "guide": "Stage-04-Backend-Database-Security/files/tests__fixtures_php.md",
+      "category": "verification",
+      "sha256": "7e9a3cc74b37180c7806bcc4ac8d60fe0fdc7844e65bb4a3f6b617c26f077ab1",
+      "lines": 13,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "tests/integration.py",
+      "owner": "Stage-04-Backend-Database-Security",
+      "guide": "Stage-04-Backend-Database-Security/files/tests__integration_py.md",
+      "category": "verification",
+      "sha256": "78cdbb7f299cd3a7145fe0e89e145d8626eb61234145a2f7ee988734f70695a2",
+      "lines": 139,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "tests/security.php",
+      "owner": "Stage-04-Backend-Database-Security",
+      "guide": "Stage-04-Backend-Database-Security/files/tests__security_php.md",
+      "category": "verification",
+      "sha256": "50e7abc98498fbae63434fc725d2530d14ef7b007cf315cd69c99dae0f449869",
+      "lines": 22,
+      "origin": "local HEAD"
+    },
+    {
+      "path": "Codex_SportsHub_Master_Prompt.md",
+      "owner": "Assemble",
+      "guide": "Assemble/files/Codex_SportsHub_Master_Prompt_md.md",
+      "category": "legacy documentation/specification",
+      "sha256": "85b413f320b102b93d99840d868d42a0f01bad0a999ba242c709386ae886b4e8",
+      "lines": 743,
+      "origin": "remote master specification; not merged"
+    }
+  ]
+}
